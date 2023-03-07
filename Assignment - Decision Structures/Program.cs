@@ -35,6 +35,9 @@ namespace Assignment___Decision_Structures
             }
         }
 
+        // ///////////////////////////////////////////////////////////////////////////////////////////
+        // ///////////////////////////////////////////////////////////////////////////////////////////
+        // BANKING MACHINE ///////////////////////////////////////////////////////////////////////////
         public static void bankingMachine()
         {
             // SETUP ////////////////////////////////////////////////////////////
@@ -132,16 +135,25 @@ namespace Assignment___Decision_Structures
             }
         }
 
+        // ///////////////////////////////////////////////////////////////////////////////////////////
+        // ///////////////////////////////////////////////////////////////////////////////////////////
+        // PARKING MACHINE ///////////////////////////////////////////////////////////////////////////
         public static void parkingMachine()
         {
+            bool validNumEntered = false;
             int minutesParked;
             int hoursCharged = 0;
             int price = 4;
             Console.WriteLine("Thank you for using Sam's Parking Garage! Please enter the number of minutes you parked: ");
         
+            while (validNumEntered == false)
+            {
+
+            }
             while (!Int32.TryParse(Console.ReadLine(), out minutesParked))
                 Console.WriteLine("Please enter a valid number: ");
-                
+
+         
             if (minutesParked < 0)
                 Console.WriteLine("Please enter a number greater than zero: ");
 
@@ -200,26 +212,44 @@ namespace Assignment___Decision_Structures
             Console.WriteLine("HOURS CHARGED  .................... " + hoursCharged);
             Console.WriteLine("AMOUNT OWING   .................... $" + price);
             Console.WriteLine("THANK YOU FOR USING SAM'S PARKING GARAGE");
-            
         }
 
+
+        // ///////////////////////////////////////////////////////////////////////////////////////////
+        // ///////////////////////////////////////////////////////////////////////////////////////////
+        // HURRICANE ANALYZER ////////////////////////////////////////////////////////////////////////
         public static void hurricaneAnalyzer()
         {
             bool done = false;
-            double givenWindSpeed, speedKmH, speedMPH, speedKTS;
+            bool isSpeedEntered = false;
+            double givenWindSpeed = 0;
+            double speedKmH, speedMPH, speedKTS;
             string units;
             Console.WriteLine("Thank you for using this hurricane analysis tool.");
             Console.WriteLine("Please enter your measured wind speed and press enter, then clarify the units used");
-            Console.WriteLine("(NOTE: ONLY KM/H, MPH, AND KTs IS ACCEPTED");
+            Console.WriteLine("(NOTE: ONLY KM/H, MPH, AND KTs IS ACCEPTED)");
 
-            while (!done)
+            if (!done)
             {
-                while (!Double.TryParse(Console.ReadLine(), out givenWindSpeed))
-                    Console.WriteLine("Please enter a valid number.");
-
-                if (givenWindSpeed > 0)
+                while (isSpeedEntered == false)
                 {
-                    Console.WriteLine("Please now enter the units used (FORMAT AS SUCH: km/h , mph , kts");
+                    if (!Double.TryParse(Console.ReadLine(), out givenWindSpeed))
+                    {
+                        Console.WriteLine("Please enter a valid number.");
+                    }
+                    else if (givenWindSpeed < 0)
+                    {
+                        Console.WriteLine("Please enter a wind speed greater than zero.");
+                    }
+                    else
+                    {
+                        isSpeedEntered = true;
+                    }
+                }
+                
+                if (givenWindSpeed >= 0)
+                {
+                    Console.WriteLine("Please now enter the units used (FORMAT AS SUCH: km/h , mph , kts)");
                     units = Console.ReadLine();
                     if (units.ToUpper() == "KM/H")
                     {
@@ -233,48 +263,48 @@ namespace Assignment___Decision_Structures
                                 {
                                     Console.WriteLine("Wind speed too low for hurricane classification.");
                                     Console.WriteLine($"Km/h: {speedKmH}");
-                                    Console.WriteLine($"mph: {speedMPH}");
-                                    Console.WriteLine($"KTS: {speedKTS}");
+                                    Console.WriteLine($"mph: {Math.Round(speedMPH, 2)}");
+                                    Console.WriteLine($"KTS: {Math.Round(speedKTS, 2)}");
                                     break;
                                 }
                             case <= 153:
                                 {
                                     Console.WriteLine("CATAGORY ONE HURRICANE");
                                     Console.WriteLine($"Km/h: {speedKmH}");
-                                    Console.WriteLine($"mph: {speedMPH}");
-                                    Console.WriteLine($"KTS: {speedKTS}");
+                                    Console.WriteLine($"mph: {Math.Round(speedMPH, 2)}");
+                                    Console.WriteLine($"KTS: {Math.Round(speedKTS, 2)}");
                                     break;
                                 }
                             case <= 177:
                                 {
                                     Console.WriteLine("CATAGORY TWO HURRICANE");
                                     Console.WriteLine($"Km/h: {speedKmH}");
-                                    Console.WriteLine($"mph: {speedMPH}");
-                                    Console.WriteLine($"KTS: {speedKTS}");
+                                    Console.WriteLine($"mph: {Math.Round(speedMPH, 2)}");
+                                    Console.WriteLine($"KTS: {Math.Round(speedKTS, 2)}");
                                     break;
                                 }
                             case <= 209:
                                 {
                                     Console.WriteLine("CATAGORY THREE HURRICANE");
                                     Console.WriteLine($"Km/h: {speedKmH}");
-                                    Console.WriteLine($"mph: {speedMPH}");
-                                    Console.WriteLine($"KTS: {speedKTS}");
+                                    Console.WriteLine($"mph: {Math.Round(speedMPH, 2)}");
+                                    Console.WriteLine($"KTS: {Math.Round(speedKTS, 2)}");
                                     break;
                                 }
                             case <= 249:
                                 {
                                     Console.WriteLine("CATAGORY FOUR HURRICANE");
                                     Console.WriteLine($"Km/h: {speedKmH}");
-                                    Console.WriteLine($"mph: {speedMPH}");
-                                    Console.WriteLine($"KTS: {speedKTS}");
-                                    break;
+                                    Console.WriteLine($"mph: {Math.Round(speedMPH, 2)}");
+                                    Console.WriteLine($"KTS: {Math.Round(speedKTS, 2)}");
+                                    break;  
                                 }
                             case > 249:
                                 {
                                     Console.WriteLine("CATAGORY FIVE HURRICANE");
                                     Console.WriteLine($"Km/h: {speedKmH}");
-                                    Console.WriteLine($"mph: {speedMPH}");
-                                    Console.WriteLine($"KTS: {speedKTS}");
+                                    Console.WriteLine($"mph: {Math.Round(speedMPH, 2)}");
+                                    Console.WriteLine($"KTS: {Math.Round(speedKTS, 2)}");
                                     break;
                                 }
                                 done = true;
@@ -291,49 +321,49 @@ namespace Assignment___Decision_Structures
                             case < 119:
                                 {
                                     Console.WriteLine("Wind speed too low for hurricane classification.");
-                                    Console.WriteLine($"Km/h: {speedKmH}");
+                                    Console.WriteLine($"Km/h: {Math.Round(speedKmH, 2)}");
                                     Console.WriteLine($"mph: {speedMPH}");
-                                    Console.WriteLine($"KTS: {speedKTS}");
+                                    Console.WriteLine($"KTS: {Math.Round(speedKTS, 2)}");
                                     break;
                                 }
                             case <= 153:
                                 {
                                     Console.WriteLine("CATAGORY ONE HURRICANE");
-                                    Console.WriteLine($"Km/h: {speedKmH}");
+                                    Console.WriteLine($"Km/h: {Math.Round(speedKmH, 2)}");
                                     Console.WriteLine($"mph: {speedMPH}");
-                                    Console.WriteLine($"KTS: {speedKTS}");
+                                    Console.WriteLine($"KTS: {Math.Round(speedKTS, 2)}");
                                     break;
                                 }
                             case <= 177:
                                 {
                                     Console.WriteLine("CATAGORY TWO HURRICANE");
-                                    Console.WriteLine($"Km/h: {speedKmH}");
+                                    Console.WriteLine($"Km/h: {Math.Round(speedKmH, 2)}");
                                     Console.WriteLine($"mph: {speedMPH}");
-                                    Console.WriteLine($"KTS: {speedKTS}");
+                                    Console.WriteLine($"KTS: {Math.Round(speedKTS, 2)}");
                                     break;
                                 }
                             case <= 209:
                                 {
                                     Console.WriteLine("CATAGORY THREE HURRICANE");
-                                    Console.WriteLine($"Km/h: {speedKmH}");
+                                    Console.WriteLine($"Km/h: {Math.Round(speedKmH, 2)}");
                                     Console.WriteLine($"mph: {speedMPH}");
-                                    Console.WriteLine($"KTS: {speedKTS}");
+                                    Console.WriteLine($"KTS: {Math.Round(speedKTS, 2)}");
                                     break;
                                 }
                             case <= 249:
                                 {
                                     Console.WriteLine("CATAGORY FOUR HURRICANE");
-                                    Console.WriteLine($"Km/h: {speedKmH}");
+                                    Console.WriteLine($"Km/h: {Math.Round(speedKmH, 2)}");
                                     Console.WriteLine($"mph: {speedMPH}");
-                                    Console.WriteLine($"KTS: {speedKTS}");
+                                    Console.WriteLine($"KTS: {Math.Round(speedKTS, 2)}");
                                     break;
                                 }
                             case > 249:
                                 {
                                     Console.WriteLine("CATAGORY FIVE HURRICANE");
-                                    Console.WriteLine($"Km/h: {speedKmH}");
+                                    Console.WriteLine($"Km/h: {Math.Round(speedKmH, 2)}");
                                     Console.WriteLine($"mph: {speedMPH}");
-                                    Console.WriteLine($"KTS: {speedKTS}");
+                                    Console.WriteLine($"KTS: {Math.Round(speedKTS, 2)}");
                                     break;
                                 }
                                 done = true;
@@ -350,62 +380,59 @@ namespace Assignment___Decision_Structures
                             case < 119:
                                 {
                                     Console.WriteLine("Wind speed too low for hurricane classification.");
-                                    Console.WriteLine($"Km/h: {speedKmH}");
-                                    Console.WriteLine($"mph: {speedMPH}");
+                                    Console.WriteLine($"Km/h: {Math.Round(speedKmH, 2)}");
+                                    Console.WriteLine($"mph: {Math.Round(speedMPH, 2)}");
                                     Console.WriteLine($"KTS: {speedKTS}");
                                     break;
                                 }
                             case <= 153:
                                 {
                                     Console.WriteLine("CATAGORY ONE HURRICANE");
-                                    Console.WriteLine($"Km/h: {speedKmH}");
-                                    Console.WriteLine($"mph: {speedMPH}");
+                                    Console.WriteLine($"Km/h: {Math.Round(speedKmH, 2)}");
+                                    Console.WriteLine($"mph: {Math.Round(speedMPH, 2)}");
                                     Console.WriteLine($"KTS: {speedKTS}");
                                     break;
                                 }
                             case <= 177:
                                 {
                                     Console.WriteLine("CATAGORY TWO HURRICANE");
-                                    Console.WriteLine($"Km/h: {speedKmH}");
-                                    Console.WriteLine($"mph: {speedMPH}");
+                                    Console.WriteLine($"Km/h: {Math.Round(speedKmH, 2)}");
+                                    Console.WriteLine($"mph: {Math.Round(speedMPH, 2)}");
                                     Console.WriteLine($"KTS: {speedKTS}");
                                     break;
                                 }
                             case <= 209:
                                 {
                                     Console.WriteLine("CATAGORY THREE HURRICANE");
-                                    Console.WriteLine($"Km/h: {speedKmH}");
-                                    Console.WriteLine($"mph: {speedMPH}");
+                                    Console.WriteLine($"Km/h: {Math.Round(speedKmH, 2)}");
+                                    Console.WriteLine($"mph: {Math.Round(speedMPH, 2)}");
                                     Console.WriteLine($"KTS: {speedKTS}");
                                     break;
                                 }
                             case <= 249:
                                 {
                                     Console.WriteLine("CATAGORY FOUR HURRICANE");
-                                    Console.WriteLine($"Km/h: {speedKmH}");
-                                    Console.WriteLine($"mph: {speedMPH}");
+                                    Console.WriteLine($"Km/h: {Math.Round(speedKmH, 2)}");
+                                    Console.WriteLine($"mph: {Math.Round(speedMPH, 2)}");
                                     Console.WriteLine($"KTS: {speedKTS}");
                                     break;
                                 }
                             case > 249:
                                 {
                                     Console.WriteLine("CATAGORY FIVE HURRICANE");
-                                    Console.WriteLine($"Km/h: {speedKmH}");
-                                    Console.WriteLine($"mph: {speedMPH}");
+                                    Console.WriteLine($"Km/h: {Math.Round(speedKmH, 2)}");
+                                    Console.WriteLine($"mph: {Math.Round(speedMPH, 2)}");
                                     Console.WriteLine($"KTS: {speedKTS}");
                                     break;
                                 }
                                 done = true;
                         }
                     }
-                    else
-                    {
-                        Console.WriteLine("Please enter a valid unit in the correct format (km/h , mph , kts):");
-                    }
-                }
-                else if (givenWindSpeed < 0)
-                {
-                    Console.WriteLine("Please enter a wind speed greater than zero.");
+                    //else
+                    //{
+                    //    Console.WriteLine("Please enter a valid unit in the correct format (km/h , mph , kts):");
+                    //}
+                    
                 }
             }
             Console.WriteLine("Please press enter to close the program.");
