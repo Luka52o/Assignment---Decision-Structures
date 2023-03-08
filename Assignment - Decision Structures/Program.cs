@@ -248,11 +248,16 @@ namespace Assignment___Decision_Structures
                         isSpeedEntered = true;
                     }
                 }
-                
+
                 if (givenWindSpeed >= 0)
                 {
                     Console.WriteLine("Please now enter the units used (FORMAT AS SUCH: km/h , mph , kts)");
                     units = Console.ReadLine();
+                    while (units.ToUpper() != "KM/H" && units.ToUpper() != "MPH" && units.ToUpper() != "KTS")
+                    {
+                        Console.WriteLine("Please enter a valid unit in the correct format (km/h , mph , kts):");
+                        units = Console.ReadLine();
+                    }
                     if (units.ToUpper() == "KM/H")
                     {
                         speedKmH = givenWindSpeed;
@@ -430,11 +435,6 @@ namespace Assignment___Decision_Structures
                                 done = true;
                         }
                     }
-                    //else
-                    //{
-                    //    Console.WriteLine("Please enter a valid unit in the correct format (km/h , mph , kts):");
-                    //}
-                    
                 }
             }
             Console.WriteLine("Please press enter to close the program.");
